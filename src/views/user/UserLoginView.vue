@@ -4,7 +4,10 @@ import { UserLoginRequest } from "../../../openapi";
 import useUserStore from "@/stores/user";
 import router from "@/router";
 
-const formLabelAlign = reactive<UserLoginRequest>({});
+const formLabelAlign = reactive<UserLoginRequest>({
+  username: "admin",
+  password: "12345678",
+});
 
 const userStore = useUserStore();
 const submitForm = () => {

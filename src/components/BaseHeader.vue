@@ -35,7 +35,7 @@ router.beforeEach((to, from, next) => {
     :router="true"
     :ellipsis="false"
   >
-    <el-menu-item> MiCode</el-menu-item>
+    <el-menu-item> MiOJ</el-menu-item>
     <template v-for="(item, index) in filterRoutes" :key="index">
       <!-- 检查是否有子路由 -->
       <el-sub-menu
