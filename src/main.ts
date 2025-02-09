@@ -11,3 +11,11 @@ const pinia = createPinia();
 pinia.use(piniaPersist);
 
 createApp(App).use(ElementPlus).use(pinia).use(router).mount("#app");
+
+router.beforeEach((to, from, next) => {
+  const title = to.name;
+  if (title && typeof title === "string") {
+    document.title = `MiCode - ${title}`;
+  }
+  next();
+});
