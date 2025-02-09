@@ -94,7 +94,7 @@ const timeLimit = computed({
 </script>
 
 <template>
-  <el-card style="width: 82vh; margin: auto">
+  <el-card style="width: 62vw; margin: auto">
     <template #header>
       <el-text size="large">修改题目</el-text>
     </template>
@@ -112,10 +112,7 @@ const timeLimit = computed({
         <el-input v-model="form.title" />
       </el-form-item>
       <el-form-item label="内容">
-        <MarkdownEditor
-          :value="form.content"
-          :handle-change="(v) => (form.content = v)"
-        />
+        <MarkdownEditor :handle-change="(v) => (form.content = v)" />
       </el-form-item>
       <el-form-item label="标签">
         <el-select
@@ -123,18 +120,12 @@ const timeLimit = computed({
           multiple
           filterable
           placeholder="请选择标签"
-          style="width: 240px"
         >
           <QuestionTagsOption />
         </el-select>
       </el-form-item>
       <el-form-item label="难度">
-        <el-select
-          v-model="form.difficulty"
-          clearable
-          placeholder="请选择难度"
-          style="width: 240px"
-        >
+        <el-select v-model="form.difficulty" clearable placeholder="请选择难度">
           <el-option
             v-for="value in diffList"
             :key="value"
@@ -144,10 +135,7 @@ const timeLimit = computed({
         </el-select>
       </el-form-item>
       <el-form-item label="答案">
-        <MarkdownEditor
-          :value="form.answer"
-          :handle-change="(v) => (form.answer = v)"
-        />
+        <MarkdownEditor :handle-change="(v) => (form.answer = v)" />
       </el-form-item>
       <el-form-item
         label="判题用例"
@@ -200,12 +188,7 @@ const timeLimit = computed({
         </el-button>
       </el-form-item>
       <el-form-item label="判题配置">
-        <el-popover
-          placement="right-start"
-          title="示例"
-          :width="160"
-          trigger="hover"
-        >
+        <el-popover placement="right-start" title="示例" trigger="hover">
           <template #default>
             <div>5秒：5000ms</div>
             <div>30秒：30000ms</div>
@@ -220,12 +203,7 @@ const timeLimit = computed({
           v-model="timeLimit"
           placeholder="请填写时间限制..."
         />
-        <el-popover
-          placement="right-start"
-          title="示例"
-          :width="160"
-          trigger="hover"
-        >
+        <el-popover placement="right-start" title="示例" trigger="hover">
           <template #default>
             <div>50mb：51200kb</div>
             <div>100mb：102400kb</div>
