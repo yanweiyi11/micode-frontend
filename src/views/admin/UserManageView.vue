@@ -76,6 +76,12 @@ const doDelete = async () => {
   <el-card style="min-width: 60vh">
     <template #header>
       <div class="card-header">
+        <el-input
+          v-model="searchModel.searchKey"
+          style="width: 240px"
+          placeholder="用户名 / 编号 / 个人介绍"
+          class="search-criteria"
+        />
         <el-select
           v-model="searchModel.gender"
           placeholder="性别"
@@ -90,12 +96,6 @@ const doDelete = async () => {
             :value="index"
           />
         </el-select>
-        <el-input
-          v-model="searchModel.searchKey"
-          style="width: 240px"
-          placeholder="用户名 / 编号 / 个人介绍"
-          class="search-criteria"
-        />
         <el-button type="primary" @click="doSearch">查询</el-button>
         <el-button type="success" @click="handleAdd">新增</el-button>
       </div>
