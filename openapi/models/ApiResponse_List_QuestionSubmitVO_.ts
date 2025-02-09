@@ -2,10 +2,10 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { QuestionSubmitVO } from "./QuestionSubmitVO";
-
+import type { QuestionSubmitVO } from './QuestionSubmitVO';
 export type ApiResponse_List_QuestionSubmitVO_ = {
-  code?: number;
-  data?: Array<QuestionSubmitVO>;
-  message?: string;
+    code?: number;
+    data?: Array<QuestionSubmitVO>;
+    message?: string;
 };
+

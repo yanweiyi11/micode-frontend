@@ -2,12 +2,12 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { JudgeConfig } from "./JudgeConfig";
-
+import type { JudgeConfig } from './JudgeConfig';
 export type QuestionSubmitAddRequest = {
-  code?: string;
-  judgeInfo?: JudgeConfig;
-  language?: string;
-  questionId?: number;
-  status?: number;
+    code?: string;
+    judgeInfo?: JudgeConfig;
+    language?: string;
+    questionId?: number;
+    status?: number;
 };
+

@@ -3,13 +3,13 @@
 /* tslint:disable */
 /* eslint-disable */
 export type UserUpdateRequest = {
-  avatarUrl?: string;
-  email?: string;
-  gender?: number;
-  id?: number;
-  password?: string;
-  tags?: Array<string>;
-  userProfile?: string;
-  userRole?: string;
-  username?: string;
+    avatarUrl?: string;
+    email?: string;
+    gender?: number;
+    id?: number;
+    password?: string;
+    userProfile?: string;
+    userRole?: string;
+    username?: string;
 };
+

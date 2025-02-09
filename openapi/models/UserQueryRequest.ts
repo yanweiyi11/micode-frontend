@@ -3,12 +3,12 @@
 /* tslint:disable */
 /* eslint-disable */
 export type UserQueryRequest = {
-  gender?: number;
-  order?: string;
-  page?: number;
-  searchKey?: string;
-  size?: number;
-  sort?: string;
-  tags?: Array<string>;
-  userRole?: string;
+    gender?: number;
+    order?: string;
+    page?: number;
+    searchKey?: string;
+    size?: number;
+    sort?: string;
+    userRole?: string;
 };
+

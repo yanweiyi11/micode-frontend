@@ -3,7 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 export type ApiResponse_boolean_ = {
-  code?: number;
-  data?: boolean;
-  message?: string;
+    code?: number;
+    data?: boolean;
+    message?: string;
 };
+

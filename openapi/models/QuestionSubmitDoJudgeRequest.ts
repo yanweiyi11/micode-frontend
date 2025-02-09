@@ -3,7 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 export type QuestionSubmitDoJudgeRequest = {
-  code?: string;
-  language?: string;
-  questionId?: number;
+    code?: string;
+    language?: string;
+    questionId?: number;
 };
+

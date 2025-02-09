@@ -2,10 +2,10 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { Page_User_ } from './Page_User_';
-export type ApiResponse_Page_User_ = {
+import type { IPage_Post_ } from './IPage_Post_';
+export type ApiResponse_IPage_Post_ = {
     code?: number;
-    data?: Page_User_;
+    data?: IPage_Post_;
     message?: string;
 };
 

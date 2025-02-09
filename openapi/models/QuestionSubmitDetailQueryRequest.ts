@@ -3,14 +3,15 @@
 /* tslint:disable */
 /* eslint-disable */
 export type QuestionSubmitDetailQueryRequest = {
-  judgeInfoResult?: string;
-  languageList?: Array<string>;
-  order?: string;
-  page?: number;
-  questionId?: number;
-  searchKey?: string;
-  size?: number;
-  sort?: string;
-  status?: number;
-  userId?: number;
+    judgeInfoResult?: string;
+    languageList?: Array<string>;
+    order?: string;
+    page?: number;
+    questionId?: number;
+    searchKey?: string;
+    size?: number;
+    sort?: string;
+    status?: number;
+    userId?: number;
 };
+

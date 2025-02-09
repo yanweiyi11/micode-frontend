@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export type TagsVO = {
-  childNameList?: Array<string>;
-  parentName?: string;
+    childNameList?: Array<string>;
+    parentName?: string;
 };
+

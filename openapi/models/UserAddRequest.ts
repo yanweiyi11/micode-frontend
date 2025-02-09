@@ -3,12 +3,12 @@
 /* tslint:disable */
 /* eslint-disable */
 export type UserAddRequest = {
-  avatarUrl?: string;
-  email?: string;
-  gender?: number;
-  password?: string;
-  tags?: Array<string>;
-  userProfile?: string;
-  userRole?: string;
-  username?: string;
+    avatarUrl?: string;
+    email?: string;
+    gender?: number;
+    password?: string;
+    userProfile?: string;
+    userRole?: string;
+    username?: string;
 };
+

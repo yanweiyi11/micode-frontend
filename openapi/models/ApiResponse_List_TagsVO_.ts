@@ -2,10 +2,10 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { TagsVO } from "./TagsVO";
-
+import type { TagsVO } from './TagsVO';
 export type ApiResponse_List_TagsVO_ = {
-  code?: number;
-  data?: Array<TagsVO>;
-  message?: string;
+    code?: number;
+    data?: Array<TagsVO>;
+    message?: string;
 };
+
