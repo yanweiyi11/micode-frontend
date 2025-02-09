@@ -4,6 +4,7 @@
 /* eslint-disable */
 import type { ApiResponse_boolean_ } from '../models/ApiResponse_boolean_';
 import type { ApiResponse_List_QuestionSubmitVO_ } from '../models/ApiResponse_List_QuestionSubmitVO_';
+import type { ApiResponse_List_UserRankingVO_ } from '../models/ApiResponse_List_UserRankingVO_';
 import type { ApiResponse_long_ } from '../models/ApiResponse_long_';
 import type { ApiResponse_Page_QuestionSubmitDetailVO_ } from '../models/ApiResponse_Page_QuestionSubmitDetailVO_';
 import type { ApiResponse_QuestionSubmitDetailVO_ } from '../models/ApiResponse_QuestionSubmitDetailVO_';
@@ -94,6 +95,23 @@ export class QuestionSubmitControllerService {
             query: {
                 'id': id,
             },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+    /**
+     * getTopRankedUsers
+     * @returns ApiResponse_List_UserRankingVO_ OK
+     * @returns any Created
+     * @throws ApiError
+     */
+    public static getTopRankedUsersUsingPost(): CancelablePromise<ApiResponse_List_UserRankingVO_ | any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/question-submit/get-top-ranked-users',
             errors: {
                 401: `Unauthorized`,
                 403: `Forbidden`,

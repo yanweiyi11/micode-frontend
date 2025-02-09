@@ -13,6 +13,7 @@ import QuestionUpdateView from "@/views/admin/QuestionUpdateView.vue";
 import QuestionAddView from "@/views/admin/QuestionAddView.vue";
 import UserAddView from "@/views/admin/UserAddView.vue";
 import UserUpdateView from "@/views/admin/UserUpdateView.vue";
+import LeaderBoard from "@/components/LeaderBoard.vue";
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -133,6 +134,15 @@ export const routes: Array<RouteRecordRaw> = [
     component: UserAddView,
     meta: {
       access: AccessEnum.ADMIN,
+      isShow: false,
+    },
+  },
+  {
+    path: "/leader-board",
+    name: "排行榜",
+    component: LeaderBoard,
+    meta: {
+      access: AccessEnum.USER,
       isShow: false,
     },
   },

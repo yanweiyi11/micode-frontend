@@ -14,6 +14,7 @@ import {
   statusList,
 } from "@/utils/constants";
 import QuestionTagsOption from "@/components/QuestionTagsOption.vue";
+import LeaderBoard from "@/components/LeaderBoard.vue";
 
 // 定义搜索参数的响应式引用
 const searchModel = ref<QuestionDetailQueryRequest>({
@@ -62,129 +63,136 @@ const jumpSolve = (id: number) => {
 </script>
 
 <template>
-  <el-card style="min-width: 60vh">
-    <template #header>
-      <div class="card-header">
-        <el-select
-          v-model="searchModel.tags"
-          multiple
-          placeholder="标签"
-          style="width: 240px"
-          class="search-criteria"
-        >
-          <QuestionTagsOption />
-        </el-select>
-        <el-select
-          v-model="searchModel.difficulty"
-          placeholder="难度"
-          style="width: 240px"
-          clearable
-          class="search-criteria"
-        >
-          <el-option
-            v-for="value in diffList"
-            :key="value"
-            :label="value"
-            :value="value"
-          />
-        </el-select>
-        <el-select
-          v-model="searchModel.status"
-          placeholder="状态"
-          style="width: 240px"
-          clearable
-          class="search-criteria"
-        >
-          <el-option
-            v-for="(value, index) in statusList"
-            :key="index"
-            :label="value"
-            :value="index"
-          />
-        </el-select>
-        <el-select
-          v-model="searchModel.judgeInfoResult"
-          placeholder="判题结果"
-          style="width: 240px"
-          clearable
-          class="search-criteria"
-        >
-          <el-option
-            v-for="item in judgeInfoMessageEnum"
-            :key="item.text"
-            :label="item.text"
-            :value="item.text"
-          />
-        </el-select>
-        <el-input
-          v-model="searchModel.searchKey"
-          style="width: 240px"
-          placeholder="题目 / 内容 / 编号"
-          class="search-criteria"
-        />
-        <el-button type="primary" @click="doSearch">查询</el-button>
-      </div>
-    </template>
-    <el-table :data="tableData" stripe table-layout="auto">
-      <el-table-column prop="id" label="编号" />
-      <el-table-column prop="title" label="题目">
-        <template #default="scope">
-          <el-link @click="jumpSolve(scope.row.id)">
-            {{ scope.row.title }}
-          </el-link>
-        </template>
-      </el-table-column>
-      <el-table-column prop="tags" label="标签">
-        <template #default="scope">
-          <template v-for="(tag, index) of scope.row.tags" :key="index">
-            <el-tag
-              type="success"
-              disable-transitions
-              :style="{ marginLeft: index !== 0 ? '8px' : '0' }"
+  <el-row :gutter="30">
+    <el-col :span="18">
+      <el-card style="min-width: 60vh">
+        <template #header>
+          <div class="card-header">
+            <el-select
+              v-model="searchModel.tags"
+              multiple
+              placeholder="标签"
+              style="width: 240px"
+              class="search-criteria"
             >
-              {{ tag }}
-            </el-tag>
-          </template>
+              <QuestionTagsOption />
+            </el-select>
+            <el-select
+              v-model="searchModel.difficulty"
+              placeholder="难度"
+              style="width: 240px"
+              clearable
+              class="search-criteria"
+            >
+              <el-option
+                v-for="value in diffList"
+                :key="value"
+                :label="value"
+                :value="value"
+              />
+            </el-select>
+            <el-select
+              v-model="searchModel.status"
+              placeholder="状态"
+              style="width: 240px"
+              clearable
+              class="search-criteria"
+            >
+              <el-option
+                v-for="(value, index) in statusList"
+                :key="index"
+                :label="value"
+                :value="index"
+              />
+            </el-select>
+            <el-select
+              v-model="searchModel.judgeInfoResult"
+              placeholder="判题结果"
+              style="width: 240px"
+              clearable
+              class="search-criteria"
+            >
+              <el-option
+                v-for="item in judgeInfoMessageEnum"
+                :key="item.text"
+                :label="item.text"
+                :value="item.text"
+              />
+            </el-select>
+            <el-input
+              v-model="searchModel.searchKey"
+              style="width: 240px"
+              placeholder="题目 / 内容 / 编号"
+              class="search-criteria"
+            />
+            <el-button type="primary" @click="doSearch">查询</el-button>
+          </div>
         </template>
-      </el-table-column>
-      <el-table-column label="执行结果">
-        <template #default="scope">
-          <el-tag type="primary" v-if="scope.row?.judgeInfo?.result">
-            {{ scope.row?.judgeInfo?.result }}
-          </el-tag>
+        <el-table :data="tableData" stripe table-layout="auto">
+          <el-table-column prop="id" label="编号" />
+          <el-table-column prop="title" label="题目">
+            <template #default="scope">
+              <el-link @click="jumpSolve(scope.row.id)">
+                {{ scope.row.title }}
+              </el-link>
+            </template>
+          </el-table-column>
+          <el-table-column prop="tags" label="标签">
+            <template #default="scope">
+              <template v-for="(tag, index) of scope.row.tags" :key="index">
+                <el-tag
+                  type="success"
+                  disable-transitions
+                  :style="{ marginLeft: index !== 0 ? '8px' : '0' }"
+                >
+                  {{ tag }}
+                </el-tag>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column label="执行结果">
+            <template #default="scope">
+              <el-tag type="primary" v-if="scope.row?.judgeInfo?.result">
+                {{ scope.row?.judgeInfo?.result }}
+              </el-tag>
+            </template>
+          </el-table-column>
+          <el-table-column label="判题状态">
+            <template #default="scope">
+              <el-tag type="warning" v-if="statusList[scope.row?.status]">
+                {{ statusList[scope.row?.status] }}
+              </el-tag>
+            </template>
+          </el-table-column>
+          <el-table-column label="通过率">
+            <template #default="scope">
+              {{ getSubmissionRatioText(scope.row) }}
+            </template>
+          </el-table-column>
+          <el-table-column label="难度">
+            <template #default="scope">
+              <el-tag type="info" v-if="scope.row?.difficulty">
+                {{ scope.row?.difficulty }}
+              </el-tag>
+            </template>
+          </el-table-column>
+        </el-table>
+        <template #footer>
+          <el-pagination
+            background
+            layout="prev, pager, next"
+            :total="total"
+            :page-size="searchModel.size"
+            v-model:current-page="searchModel.page"
+            @change="loadFormData"
+          />
         </template>
-      </el-table-column>
-      <el-table-column label="判题状态">
-        <template #default="scope">
-          <el-tag type="warning" v-if="statusList[scope.row?.status]">
-            {{ statusList[scope.row?.status] }}
-          </el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column label="通过率">
-        <template #default="scope">
-          {{ getSubmissionRatioText(scope.row) }}
-        </template>
-      </el-table-column>
-      <el-table-column label="难度">
-        <template #default="scope">
-          <el-tag type="info" v-if="scope.row?.difficulty">
-            {{ scope.row?.difficulty }}
-          </el-tag>
-        </template>
-      </el-table-column>
-    </el-table>
-    <template #footer>
-      <el-pagination
-        background
-        layout="prev, pager, next"
-        :total="total"
-        :page-size="searchModel.size"
-        v-model:current-page="searchModel.page"
-        @change="loadFormData"
-      />
-    </template>
-  </el-card>
+      </el-card>
+    </el-col>
+    <el-col :span="6">
+      <LeaderBoard />
+    </el-col>
+  </el-row>
 </template>
 
 <style scoped>
