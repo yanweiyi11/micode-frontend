@@ -68,9 +68,10 @@ const jumpSolve = (id: number) => {
         >
           <el-option
             v-for="item in languageList"
-            :key="item"
-            :label="item"
-            :value="item"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+            :disabled="item.disabled"
           />
         </el-select>
         <el-select

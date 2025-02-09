@@ -14,6 +14,7 @@ import {
 } from "../../../openapi";
 import { Check, Clock, Close, Loading } from "@element-plus/icons-vue";
 import {
+  defaultLanguage,
   formatDate,
   getSubmissionPercentage,
   languageList,
@@ -27,7 +28,7 @@ const questionDetailVO = ref<QuestionDetailVO>({});
 // 提交表单数据
 const submitForm = ref<QuestionSubmitDoJudgeRequest>({
   questionId: questionId,
-  language: "java",
+  language: defaultLanguage,
   code: "",
 });
 
@@ -297,9 +298,10 @@ const switchStatus = (status: number) => {
               >
                 <el-option
                   v-for="item in languageList"
-                  :key="item"
-                  :label="item"
-                  :value="item"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                  :disabled="item.disabled"
                 />
               </el-select>
             </el-col>

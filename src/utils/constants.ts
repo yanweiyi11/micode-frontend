@@ -18,7 +18,19 @@ export const judgeInfoMessageEnum = [
   { key: "WAITING", text: "等待中" },
 ];
 
-export const languageList = ["java", "python"];
+export const languageList = [
+  {
+    value: "java",
+    label: "java",
+  },
+  {
+    value: "python",
+    label: "python（开发中）",
+    disabled: true,
+  },
+];
+
+export const defaultLanguage = languageList[0].value;
 
 export const userRoleList = ["admin", "user", "ban"];
 

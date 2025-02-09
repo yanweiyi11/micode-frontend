@@ -25,7 +25,7 @@ const doSubmit = async () => {
 </script>
 
 <template>
-  <el-card style="width: 70vh; margin: auto">
+  <el-card style="width: 30vw; margin: auto">
     <template #header>
       <el-text size="large">添加用户</el-text>
     </template>

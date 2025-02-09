@@ -16,13 +16,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <Viewer
-    :value="props.value"
-    :plugins="bytemdPlugins"
-    :locale="zhHans"
-    :tabindex="2"
-    :sanitize="23"
-  />
+  <Viewer :value="props.value" :plugins="bytemdPlugins" :locale="zhHans" />
 </template>
 
 <style scoped>

@@ -4,7 +4,7 @@ import "highlight.js/styles/vs.css";
 import "juejin-markdown-themes/dist/juejin.min.css";
 import zhHans from "bytemd/lib/locales/zh_Hans.json";
 import bytemdPlugins from "@/utils/bytemdPlugins";
-import { defineProps } from "vue";
+import { defineProps, ref } from "vue";
 import axios from "axios";
 
 // 定义接收的 props
@@ -43,22 +43,36 @@ const goImg = async (file: File) => {
   });
   return result.data;
 };
+
+const value = ref(props.value);
+const mode = ref(props.mode);
+const handlerEditorChange = (v: any) => {
+  value.value = v;
+  if (props.handleChange) {
+    props.handleChange(v);
+  }
+};
 </script>
 
 <template>
-  <Editor
-    :value="props.value"
-    :mode="props.mode"
-    :plugins="bytemdPlugins"
-    :locale="zhHans"
-    :uploadImages="uploadImage"
-    @change="props.handleChange"
-    :tabindex="2"
-    :sanitize="23"
-  />
+  <div id="markdown-editor">
+    <Editor
+      :value="value"
+      :mode="mode"
+      :plugins="bytemdPlugins"
+      :locale="zhHans"
+      :uploadImages="uploadImage"
+      @change="handlerEditorChange"
+    />
+  </div>
 </template>
 
 <style scoped>
+#markdown-editor {
+  width: 100%;
+  height: 100%;
+}
+
 :deep(.bytemd-fullscreen) {
   z-index: 999;
 }

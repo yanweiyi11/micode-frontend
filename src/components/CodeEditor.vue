@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import * as monaco from "monaco-editor";
 import { defineProps, onMounted, ref, toRaw, watch, withDefaults } from "vue";
+import { defaultLanguage } from "@/utils/constants";
 
 /**
  * 定义组件属性的类型
@@ -16,7 +17,7 @@ interface Props {
  */
 const props = withDefaults(defineProps<Props>(), {
   value: () => "",
-  language: () => "java",
+  language: () => defaultLanguage,
 });
 
 const codeEditorRef = ref();
