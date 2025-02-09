@@ -8,7 +8,6 @@ import {
   UserVO,
 } from "../../../openapi";
 import { formatDate, genderList } from "@/utils/constants";
-import UserTagsOption from "@/components/UserTagsOption.vue";
 
 // 定义查询模型
 const searchModel = ref<UserQueryRequest>({
@@ -78,16 +77,6 @@ const doDelete = async () => {
     <template #header>
       <div class="card-header">
         <el-select
-          v-model="searchModel.tags"
-          multiple
-          filterable
-          placeholder="标签"
-          style="width: 240px"
-          class="search-criteria"
-        >
-          <UserTagsOption />
-        </el-select>
-        <el-select
           v-model="searchModel.gender"
           placeholder="性别"
           style="width: 240px"
@@ -114,19 +103,6 @@ const doDelete = async () => {
     <el-table :data="tableData" stripe table-layout="auto">
       <el-table-column prop="id" label="编号" />
       <el-table-column prop="username" label="用户名" />
-      <el-table-column prop="tags" label="标签">
-        <template #default="scope">
-          <template v-for="(tag, index) of scope.row.tags" :key="index">
-            <el-tag
-              type="primary"
-              disable-transitions
-              :style="{ marginLeft: index !== 0 ? '8px' : '0' }"
-            >
-              {{ tag }}
-            </el-tag>
-          </template>
-        </template>
-      </el-table-column>
       <el-table-column label="性别">
         <template #default="scope">
           {{ genderList[scope.row.gender] }}

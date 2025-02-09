@@ -2,7 +2,6 @@
 import { onMounted, ref } from "vue";
 import { UserControllerService, UserUpdateRequest } from "../../../openapi";
 import { genderList, userRoleList } from "@/utils/constants";
-import UserTagsOption from "@/components/UserTagsOption.vue";
 import { useRoute } from "vue-router";
 import { ElMessage } from "element-plus";
 import router from "@/router";
@@ -82,17 +81,6 @@ const doSubmit = async () => {
             {{ item }}
           </el-radio>
         </el-radio-group>
-      </el-form-item>
-      <el-form-item label="标签">
-        <el-select
-          v-model="form.tags"
-          multiple
-          filterable
-          placeholder="请选择标签"
-          style="width: 240px"
-        >
-          <userTagsOption />
-        </el-select>
       </el-form-item>
       <el-form-item label="个人介绍">
         <el-input
