@@ -7,11 +7,7 @@ const tagsVOList = ref<TagsVO[]>();
 // 加载标签数据
 const loadTags = async () => {
   const res = await QuestionControllerService.getTagsUsingGet();
-  if (res.code === 0) {
-    tagsVOList.value = res.data as TagsVO[];
-  } else {
-    ElMessage.error(`加载标签数据失败，${res.message}`);
-  }
+  tagsVOList.value = res.data as TagsVO[];
 };
 onMounted(() => {
   loadTags();

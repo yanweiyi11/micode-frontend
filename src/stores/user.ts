@@ -1,5 +1,10 @@
 import { defineStore } from "pinia";
-import { User, UserControllerService, UserVO } from "@/../openapi";
+import {
+  User,
+  UserControllerService,
+  UserLoginRequest,
+  UserVO,
+} from "@/../openapi";
 import router from "@/router";
 import { ElMessage } from "element-plus";
 
@@ -20,26 +25,22 @@ const useUserStore = defineStore("user", {
   },
   actions: {
     // 用户登录
-    async login(user: User) {
+    async login(user: UserLoginRequest) {
       const res = await UserControllerService.userLoginUsingPost(user);
-      if (res.code === 0) {
-        this.user = res.data;
-        ElMessage.success("登陆成功");
-        await router.push("/");
-      } else {
-        ElMessage.error("登陆失败，" + res.message);
-      }
+      this.user = res.data;
+      ElMessage.success("登录功");
+      await router.push("/");
     },
     // 用户登出
     async logout() {
-      const res = await UserControllerService.userLogoutUsingPost();
-      if (res.code === 0) {
-        this.user = null;
-        ElMessage.success("登出成功");
-        await router.push("/");
-      } else {
-        ElMessage.success("登出失败，" + res.message);
-      }
+      await UserControllerService.userLogoutUsingPost();
+      this.user = null;
+      ElMessage.success("登出成功");
+      await router.push("/");
+    },
+    // 删除用户信息
+    deleteUser() {
+      this.user = null;
     },
   },
 });
