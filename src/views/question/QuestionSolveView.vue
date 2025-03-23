@@ -43,11 +43,7 @@ const fetchQuestion = async () => {
   const res = await QuestionControllerService.getQuestionDetailVoByIdUsingGet(
     questionId
   );
-  if (res.code === 0) {
-    questionDetailVO.value = res.data as QuestionDetailVO;
-  } else {
-    ElMessage.error(`题目加载失败，${res.message}`);
-  }
+  questionDetailVO.value = res.data as QuestionDetailVO;
 };
 
 // 存储用户判题记录
@@ -85,7 +81,6 @@ const fetchSubmissions = async () => {
         isFetching = false;
       }
     } else {
-      ElMessage.error(`提交记录获取失败，${res.message}`);
       // 如果请求失败，重置标志
       isFetching = false;
     }
@@ -124,15 +119,9 @@ const submitCode = async () => {
     return;
   }
 
-  const res = await QuestionSubmitControllerService.doJudgeUsingPost(
-    submitForm.value
-  );
-  if (res.code === 0) {
-    ElMessage.success("提交成功");
-    await fetchSubmissions();
-  } else {
-    ElMessage.error(`提交失败，${res.message}`);
-  }
+  await QuestionSubmitControllerService.doJudgeUsingPost(submitForm.value);
+  ElMessage.success("提交成功");
+  await fetchSubmissions();
 
   // 禁用按钮
   isSpeed.value = true;

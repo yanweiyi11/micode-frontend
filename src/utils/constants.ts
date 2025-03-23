@@ -22,6 +22,7 @@ export const languageList = [
   {
     value: "java",
     label: "java",
+    disabled: false,
   },
   {
     value: "python",

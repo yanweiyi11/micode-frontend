@@ -33,17 +33,13 @@ const doCancel = () => {
   router.push({ path: "/admin/question-manage" });
 };
 const doSubmit = async () => {
-  const res = await QuestionControllerService.addQuestionUsingPost({
+  await QuestionControllerService.addQuestionUsingPost({
     ...form.value,
     judgeCase: judgeCaseForm.caseList,
     judgeConfig: { timeLimit: timeLimit.value, memoryLimit: memoryLimit.value },
   });
-  if (res.code === 0 && res.data) {
-    ElMessage.success("添加成功");
-    await router.push({ path: "/admin/question-manage" });
-  } else {
-    ElMessage.error(`添加失败，${res.message}`);
-  }
+  ElMessage.success("添加成功");
+  await router.push({ path: "/admin/question-manage" });
 };
 
 // 计算属性：memoryLimit 和 timeLimit

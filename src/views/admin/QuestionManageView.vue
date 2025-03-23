@@ -34,12 +34,8 @@ const loadFormData = async () => {
     ...searchModel.value,
     status: Number(searchModel.value.status),
   });
-  if (res?.code === 0) {
-    tableData.value = res.data?.records;
-    total.value = Number(res.data?.total);
-  } else {
-    ElMessage.warning(`加载数据失败，${res.message}`);
-  }
+  tableData.value = res.data?.records;
+  total.value = Number(res.data?.total);
 };
 
 const doSearch = () => {
@@ -69,16 +65,12 @@ const handleDelete = (id: number) => {
 };
 
 const doDelete = async () => {
-  const res = await QuestionControllerService.deleteQuestionUsingPost({
+  await QuestionControllerService.deleteQuestionUsingPost({
     id: deleteQuestionId.value,
   });
-  if (res.code === 0) {
-    ElMessage.success("删除成功");
-    delDialogVisible.value = false;
-    await loadFormData(); // 重新加载数据
-  } else {
-    ElMessage.error(`删除失败，${res.message}`);
-  }
+  ElMessage.success("删除成功");
+  delDialogVisible.value = false;
+  await loadFormData(); // 重新加载数据
 };
 </script>
 

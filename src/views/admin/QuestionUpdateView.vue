@@ -27,12 +27,8 @@ const loadData = async () => {
   const res = await QuestionControllerService.getQuestionVoByIdUsingGet(
     questionId
   );
-  if (res.code === 0) {
-    form.value = res.data as QuestionUpdateRequest;
-    judgeCaseForm.caseList = res.data?.judgeCase ?? [];
-  } else {
-    ElMessage.error(`获取数据失败，${res.message}`);
-  }
+  form.value = res.data as QuestionUpdateRequest;
+  judgeCaseForm.caseList = res.data?.judgeCase ?? [];
 };
 onMounted(() => {
   loadData();
@@ -54,17 +50,13 @@ const doCancel = () => {
   router.push({ path: "/admin/question-manage" });
 };
 const doSubmit = async () => {
-  const res = await QuestionControllerService.updateQuestionUsingPost({
+  await QuestionControllerService.updateQuestionUsingPost({
     ...form.value,
     judgeCase: judgeCaseForm.caseList,
     judgeConfig: { timeLimit: timeLimit.value, memoryLimit: memoryLimit.value },
   });
-  if (res.code === 0 && res.data) {
-    ElMessage.success("更新成功");
-    await router.push({ path: "/admin/question-manage" });
-  } else {
-    ElMessage.error(`更新失败，${res.message}`);
-  }
+  ElMessage.success("更新成功");
+  await router.push({ path: "/admin/question-manage" });
 };
 
 // 计算属性：memoryLimit 和 timeLimit

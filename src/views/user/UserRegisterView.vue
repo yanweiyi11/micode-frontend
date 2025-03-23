@@ -8,15 +8,11 @@ const formLabelAlign = reactive<UserRegisterRequest>({});
 
 const router = useRouter();
 const submitForm = async () => {
-  const res = await UserControllerService.userRegisterUsingPost(formLabelAlign);
-  if (res.code === 0) {
-    ElMessage.success("注册成功");
-    setTimeout(() => {
-      router.push({ path: "/user/login" });
-    }, 500);
-  } else {
-    ElMessage.error(`注册失败，${res.message}`);
-  }
+  await UserControllerService.userRegisterUsingPost(formLabelAlign);
+  ElMessage.success("注册成功");
+  setTimeout(() => {
+    router.push({ path: "/user/login" });
+  }, 500);
 };
 const resetForm = () => {
   formLabelAlign.username = "";

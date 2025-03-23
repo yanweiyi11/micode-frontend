@@ -28,25 +28,8 @@ const loadFormData = async () => {
   const res = await UserControllerService.listUserVoByPageUsingPost({
     ...searchModel.value,
   });
-  if (res?.code === 0) {
-    tableData.value = res.data?.records;
-    total.value = Number(res.data?.total);
-  } else {
-    ElMessage.warning(`加载数据失败，${res.message}`);
-  }
-};
-
-const doSearch = () => {
-  searchModel.value.page = 1; // 重置为第一页
-  loadFormData();
-};
-
-const handleUpdate = (id: number) => {
-  router.push({ path: `/user/update/${id}` });
-};
-
-const handleAdd = () => {
-  router.push({ path: "/user/add" });
+  tableData.value = res.data?.records;
+  total.value = Number(res.data?.total);
 };
 
 // 删除操作相关
@@ -59,16 +42,12 @@ const handleDelete = (id: number) => {
 };
 
 const doDelete = async () => {
-  const res = await UserControllerService.deleteUserUsingPost({
+  await UserControllerService.deleteUserUsingPost({
     id: deleteUserId.value,
   });
-  if (res.code === 0) {
-    ElMessage.success("删除成功");
-    delDialogVisible.value = false;
-    await loadFormData(); // 重新加载数据
-  } else {
-    ElMessage.error(`删除失败，${res.message}`);
-  }
+  ElMessage.success("删除成功");
+  delDialogVisible.value = false;
+  await loadFormData(); // 重新加载数据
 };
 </script>
 

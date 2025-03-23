@@ -15,11 +15,7 @@ const userId = route.params.id as unknown as number;
 // 加载题目数据
 const loadData = async () => {
   const res = await UserControllerService.getUserVoByIdUsingGet(userId);
-  if (res.code === 0) {
-    form.value = res.data as UserUpdateRequest;
-  } else {
-    ElMessage.error(`获取数据失败，${res.message}`);
-  }
+  form.value = res.data as UserUpdateRequest;
 };
 onMounted(() => {
   loadData();
@@ -30,15 +26,11 @@ const doCancel = () => {
   router.push({ path: "/admin/user-manage" });
 };
 const doSubmit = async () => {
-  const res = await UserControllerService.updateUserUsingPost({
+  await UserControllerService.updateUserUsingPost({
     ...form.value,
   });
-  if (res.code === 0 && res.data) {
-    ElMessage.success("更新成功");
-    await router.push({ path: "/admin/user-manage" });
-  } else {
-    ElMessage.error(`更新失败，${res.message}`);
-  }
+  ElMessage.success("更新成功");
+  await router.push({ path: "/admin/user-manage" });
 };
 </script>
 

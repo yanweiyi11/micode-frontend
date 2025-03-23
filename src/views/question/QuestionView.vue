@@ -31,12 +31,8 @@ const loadFormData = async () => {
       ...searchModel.value,
       status: Number(searchModel.value.status),
     });
-  if (res?.code === 0) {
-    tableData.value = res.data?.records;
-    total.value = Number(res.data?.total);
-  } else {
-    ElMessage.warning(`加载数据失败，${res.message}`);
-  }
+  tableData.value = res.data?.records;
+  total.value = Number(res.data?.total);
 };
 
 // 组件挂载后加载数据

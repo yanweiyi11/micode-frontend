@@ -15,14 +15,6 @@ import LeaderBoard from "@/components/LeaderBoard.vue";
   margin: 0 auto;
 }
 
-.page-title {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 28px;
-  font-weight: bold;
-  color: #303133;
-}
-
 .leader-board {
   width: 100%;
 }

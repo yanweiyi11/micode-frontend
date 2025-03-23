@@ -34,13 +34,8 @@ const loadData = async () => {
     await QuestionSubmitControllerService.listQuestionSubmitDetailVoByPageUsingPost(
       searchModel.value
     );
-  if (res?.code === 0) {
-    tableData.value = res.data?.records;
-    total.value = Number(res.data?.total);
-  } else {
-    // 加载失败时的消息提醒
-    ElMessage.warning(`加载数据失败，${res.message}`);
-  }
+  tableData.value = res.data?.records;
+  total.value = Number(res.data?.total);
 };
 
 // 搜索功能：重置页码至1，并重新加载数据
