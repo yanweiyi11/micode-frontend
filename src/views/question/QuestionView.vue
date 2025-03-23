@@ -14,7 +14,6 @@ import {
   statusList,
 } from "@/utils/constants";
 import QuestionTagsOption from "@/components/QuestionTagsOption.vue";
-import LeaderBoard from "@/components/LeaderBoard.vue";
 
 // 定义搜索参数的响应式引用
 const searchModel = ref<QuestionDetailQueryRequest>({
@@ -64,7 +63,7 @@ const jumpSolve = (id: number) => {
 
 <template>
   <el-row :gutter="30">
-    <el-col :span="18">
+    <el-col :span="24">
       <el-card style="min-width: 60vh">
         <template #header>
           <div class="card-header">
@@ -188,9 +187,6 @@ const jumpSolve = (id: number) => {
           />
         </template>
       </el-card>
-    </el-col>
-    <el-col :span="6">
-      <LeaderBoard />
     </el-col>
   </el-row>
 </template>

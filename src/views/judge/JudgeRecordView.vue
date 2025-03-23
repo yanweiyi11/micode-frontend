@@ -13,7 +13,6 @@ import {
   languageList,
   statusList,
 } from "@/utils/constants";
-import LeaderBoard from "@/components/LeaderBoard.vue";
 
 // 搜索模型：用于搜索提交记录的查询参数
 const searchModel = ref<QuestionSubmitDetailQueryRequest>({
@@ -58,7 +57,7 @@ const jumpSolve = (id: number) => {
 
 <template>
   <el-row :gutter="30">
-    <el-col :span="18">
+    <el-col :span="24">
       <el-card style="min-width: 60vh">
         <template #header>
           <div class="card-header">
@@ -174,9 +173,6 @@ const jumpSolve = (id: number) => {
           />
         </template>
       </el-card>
-    </el-col>
-    <el-col :span="6">
-      <LeaderBoard />
     </el-col>
   </el-row>
 </template>

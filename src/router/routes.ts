@@ -13,7 +13,7 @@ import QuestionUpdateView from "@/views/admin/QuestionUpdateView.vue";
 import QuestionAddView from "@/views/admin/QuestionAddView.vue";
 import UserAddView from "@/views/admin/UserAddView.vue";
 import UserUpdateView from "@/views/admin/UserUpdateView.vue";
-import LeaderBoard from "@/components/LeaderBoard.vue";
+import LeaderBoardView from "@/views/question/LeaderBoardView.vue";
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -82,6 +82,15 @@ export const routes: Array<RouteRecordRaw> = [
     },
   },
   {
+    path: "/leader-board",
+    name: "排行榜",
+    component: LeaderBoardView,
+    meta: {
+      access: AccessEnum.NOT_LOGIN,
+      isShow: true,
+    },
+  },
+  {
     path: "/admin",
     name: "管理员",
     children: [
@@ -134,15 +143,6 @@ export const routes: Array<RouteRecordRaw> = [
     component: UserAddView,
     meta: {
       access: AccessEnum.ADMIN,
-      isShow: false,
-    },
-  },
-  {
-    path: "/leader-board",
-    name: "排行榜",
-    component: LeaderBoard,
-    meta: {
-      access: AccessEnum.USER,
       isShow: false,
     },
   },
